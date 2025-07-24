@@ -1,0 +1,382 @@
+@charser "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#container{
+	width:100%;
+	height:100vh;
+	background: white;
+	position: fixed;
+	top:0;
+	left: 0;
+	z-index: 10000;
+}
+
+#page_cover{
+	width:100%;
+	height:100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #7F00FF;
+    background: linear-gradient(90deg, rgba(127, 0, 255, 0.15) 0%, rgba(225, 0, 255, 0.15) 100%);
+}
+
+#profile_box{
+	width:300px;
+	height:auto;
+	border:1px solid #ccc;
+	box-shadow: 0 5px 7px #727272;
+	background-color: white;
+	padding:20px 20px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#profile_pic{
+	width:150px;
+	height:150px;
+	border:5px solid white;
+	border-radius: 50%;
+	box-shadow: 0 0 10px #ccc;
+	position: relative;
+	overflow: hidden;
+}
+
+#profile_icon{
+	font-size: 120px;
+	color: #ccc;
+	position: absolute;
+	left:50%;
+	top: 25px;
+	transform: translate(-50%);
+}
+
+#input_file{
+	width:140px;
+	height:140px;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+#profile_name{
+	color:grey;
+	font-family: 'ubuntu', sans-serif;
+	margin-top: 13px;
+	margin-bottom: 8px;
+}
+
+#name{
+	font-size: 25px;
+	font-family: 'ubuntu', sans-serif;
+	margin-bottom: 10px;
+}
+
+#next{
+	width:100%;
+	font-size: 17px;
+    background: #642B73;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #C6426E, #642B73);
+	background: linear-gradient(to right, #C6426E, #642B73);
+	border: none;
+	outline: none;
+	color:white;
+	margin-top: 5px;
+	padding:5px;
+	font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings:"wdth" 100;
+    border-radius: 6px;
+    box-shadow: 0 3px 5px #ccc;
+    cursor: pointer;
+    display: none;
+}
+/*profile coding end*/
+
+
+/*main website coding start*/
+#website_cover{
+	width:100%;
+	height:100vh;
+	position: fixed;
+}
+
+#header{
+	width:100%;
+	height:150px;
+	background-image: url(images/image.jpg);
+	background-size: cover;
+	background-position:bottom;
+	opacity:0.75;
+	position: fixed;
+}
+
+#profile_picture{
+	width:150px;
+	height: 150px;
+	background-color: purple;
+	box-shadow: -2px -15px 40px white;
+	border:2px solid purple;
+	border-radius: 50%;
+	position: absolute;
+	top:80px;
+	left: 50%;
+	transform: translate(-50%);
+	box-shadow: 0 0 10px black;
+}
+
+#user_name{
+	font-family: "ubuntu",sans-serif;
+	text-align: center;
+	margin-top: 1px;
+	color: purple;
+}
+
+#welcome{
+	font-family: "Ubuntu Sans", sans-serif;
+	text-align: center;
+	margin-top: 90px;
+	color: rgba(0, 0, 0, 0.8);
+	font-size: 20px;
+}
+
+#app{
+	width:100%;
+	height:200px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 46px;
+	margin-top: 31px;
+}
+
+#contact,#player,#calculator{
+	width:80px;
+	height:60px;
+	border-radius:15px;
+	margin:20px;
+	background-color: white;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#contact i,#player i,#calculator i{
+	font-size: 35px;
+	color:purple;
+	cursor: pointer;
+}
+
+#contact p,#player p,#calculator p{
+	font-family: 'ubuntu',sans-serif;
+	margin-top: 10px;
+	font-size: 15px;
+	color:purple;
+}
+
+#footer{
+	width:100%;
+	height:100px;
+	background-color: purple;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: 0;
+}
+
+#footer p{
+	color:white;
+	font-family: 'ubuntu',sans-serif;
+}
+
+#logout{
+	float:right;
+	color:white;
+	margin-right: 20px;
+	margin-top: 10px;
+	font-size: 17px;
+	cursor: pointer;
+}
+
+#header p{
+	float: right;
+	color:white;
+	font-size: 13px;
+	margin-left: 95%;
+	margin-right: 10px;
+	font-family: 'ubuntu',sans-serif;
+}
+
+/*@media(max-width:576px)
+{
+	#app{
+		flex-direction: column;
+		height: 200px;
+		margin-top: 20px;
+	}
+
+	#footer{
+		height: 80px;
+		margin-top: 74px;
+	}
+
+	#profile_picture{
+		width: 100px;
+		height: 100px;
+		margin-top: 20px;
+	}
+
+	#user_name{
+		margin-top: 55px;
+		font-size: 25px;
+	}
+
+	#logout{
+		font-size: 14px;
+	}
+
+	#header p{
+		font-size: 9px;
+		margin-right: 13px;
+		margin-top: 2px;
+	}
+}
+*/
+@media(max-width: 1440px)
+{
+	#user_name{
+		margin-top: 5px;
+	}
+
+	#welcome{
+		margin-top: 240px;
+	}
+
+	#app{
+		margin-top: 100px;
+	}
+
+	#footer{
+		margin-top: 370px;
+	}
+}
+
+@media(max-width: 1025px)
+{
+	#app{
+		margin-bottom: 0;
+	}
+
+	#footer{
+		margin-top: 88px;
+	}
+
+	#website_cover{
+		position: fixed;
+	}
+}
+
+@media(max-width: 769px)
+{
+	#app{
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	#footer{
+		margin-top: 20px;
+		height: 70px;
+	}
+}
+
+@media(max-height: 576px)
+{
+	#app{
+		margin-top: 70px;
+	}
+
+	#footer{
+		position: absolute;
+		bottom: 0px;
+		left: 0;
+	}
+
+	#welcome{
+		margin-top: 230px;
+	}
+}
+
+@media(max-width: 426px)
+{
+	#welcome{
+		margin-top: 236px;
+	}
+
+	#user_name{
+		margin-top: 3px;
+	}
+
+	#app{
+		flex-direction: row;
+		margin-top: 45px;
+		background-color: white;
+	}
+
+	#contact,#player,#calculator{
+		height: auto;
+		margin: 15px;
+		background-color: inherit;
+	}
+
+	#website_cover{
+		position: fixed;
+	}
+
+	#video_name, #video_link {
+		height: 40px;
+	}
+}
+
+@media(max-height: 426px)
+{
+	#website_cover{
+		overflow: scroll;
+	}
+
+	#contact,#player,#calculator{
+		background: inherit;
+	}
+}
+
+@media(max-height: 769px)
+{
+	#footer{
+		margin-top: 193px;
+	}
+}
+
+@media(max-height: 425px)
+{
+	#app{
+		margin-top: -60px;
+	}
+
+	#footer{
+		height: 40px;
+	}
+}

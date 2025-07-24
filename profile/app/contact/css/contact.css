@@ -1,0 +1,306 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #7F00FF;
+	background: linear-gradient(90deg, rgba(127, 0, 255, 0.15) 0%, rgba(225, 0, 255, 0.15) 100%);
+	overflow-x: hidden;
+}
+
+#main_box {
+	width: 90%;
+	max-width: 500px;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	overflow: auto;
+	background-color: transparent;
+}
+
+#new_contact {
+	font-size: 20px;
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #6200ee; /* deep purple */
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+	transition: background-color 0.3s ease, transform 0.2s ease;
+	z-index: 999;
+}
+
+#new_contact:hover {
+	background-color: #3700b3; /* darker purple on hover */
+	transform: scale(1.08);
+}
+
+
+#contact_bg {
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#add_contact_box {
+	width: 80%;
+	max-width: 400px;
+	height: 230px;
+	background-color: white;
+	border-radius: 15px;
+	padding: 20px;
+	margin: 40px auto;
+}
+
+#add_contact_box h1 {
+	text-align: center;
+	color: purple;
+	font-family: 'ubuntu', sans-serif;
+	margin-bottom: 10px;
+}
+
+#c_name,
+#c_number {
+	width: 100%;
+	padding: 5px;
+	border: none;
+	border: 1px solid #ccc;
+	border-left: 2px solid purple;
+	margin-top: 10px;
+	outline: none;
+	font-size: 14px;
+	color: #727272;
+	font-family: "Montserrat", sans-serif;
+}
+
+#add,
+#close {
+	width: 80px;
+	padding: 8px;
+	margin: 5px;
+	border-radius: 10px;
+	outline: none;
+	cursor: pointer;
+	background-color: purple;
+	color: white;
+	font-family: sans-serif;
+	border: none;
+	float: right;
+	margin-top: 25px;
+}
+
+#title_box {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+
+#contact {
+	font-size: 30px;
+	font-weight: normal;
+	font-family: "Red Rose", serif;
+	font-style: normal;
+}
+
+#user_title_icon {
+	font-size: 25px;
+	color: #424242;
+	margin: 6px;
+}
+
+#contact_box {
+	width: 100%;
+}
+
+#search {
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	outline: none;
+	padding: 10px;
+	color: #727272;
+	background-color: inherit;
+	font-size: 14px;
+	font-family: sans-serif;
+}
+
+#user_contect {
+	width: 100%;
+	height: calc(100vh - 150px);
+	margin-top: 10px;
+	padding: 10px;
+	padding-top: 0;
+	overflow-y: auto;
+}
+
+#user_contect::-webkit-scrollbar {
+	width: 5px;
+}
+
+#user_contect::-webkit-scrollbar-track {
+	background-color: inherit;
+}
+
+#user_contect::-webkit-scrollbar-thumb {
+	background-color: purple;
+	cursor: pointer;
+}
+
+#user {
+	width: 100%;
+	background-color: white;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+#user_icon {
+	font-size: 15px;
+	margin-right: 10px;
+	color: #767676;
+}
+
+#user_name {
+	margin-top: 15px;
+	display: inline;
+	font-family: "Barlow", sans-serif;
+	font-weight: 400;
+}
+
+#user hr {
+	border: 0.5px solid #DDD;
+	width: 70%;
+	margin-top: 6px;
+}
+
+#phone_icon {
+	font-size: 15px;
+	margin-right: 10px;
+	margin-top: 7px;
+	color: #767676;
+	cursor: pointer;
+}
+
+#user_phone {
+	font-family: "Barlow", sans-serif;
+	font-weight: 400;
+	display: inline;
+	margin-top: 7px;
+}
+
+#delet_icon,
+#edit_icon {
+	font-size: 15px;
+	float: right;
+	cursor: pointer;
+	margin-right: 20px;
+}
+
+#delet_icon {
+	color: #AD0000;
+}
+
+#edit_icon {
+	color: purple;
+}
+
+#new_add_contact_warning{
+	color: red;
+	font-size: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-family:'ubuntu', sans-serif;
+	display: none;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 769px) {
+	#add_contact_box {
+		height: 230px;
+	}
+}
+
+@media (max-width: 569px) {
+	#new_contact {
+		font-size: 25px;
+		bottom: 20px;
+		right: 20px;
+	}
+
+	#add_contact_box {
+		width: 90%;
+		height: 230px;
+	}
+	#add_contact_box h1 {
+		font-size: 26px;
+	}
+
+}
+
+@media (max-width: 321px) {
+	#new_contact {
+		font-size: 20px;
+	}
+
+	#add_contact_box{
+		height: 230px;
+	}
+
+	#add_contact_box h1 {
+		font-size: 20px;
+	}
+
+	#add,
+	#close {
+		width: 60px;
+		padding: 4px;
+		font-size: 12px;
+	}
+
+	#delet_icon{
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		margin: 0;
+		margin-right: -30px;
+	}
+
+	#edit_icon{
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		margin: 0;
+		margin-right: -45px;
+	}
+}
+
+@media (max-height: 400px) {
+	#main_box {
+		height: auto;
+		position: relative;
+	}
+
+	#user_contect {
+		height: auto;
+		overflow-y: visible;
+	}
+}

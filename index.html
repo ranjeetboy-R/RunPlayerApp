@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+ 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Fredoka:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+	<div id="container">
+		<div id="box">
+
+		  <div id="login" class="animate__animated animate__flipInY">
+			<h1>Login</h1>
+			<form id="login_frm" autocomplete="off">
+				<input type="email" placeholder="Email id" id="login_email" required="required">
+				<small id="email_register_alert"> Your email id is not Registered ..</small>
+			    <input type="password" placeholder="Password" id="login_password" required="required">
+			    <small id="password_warning"><i class="fa-solid fa-triangle-exclamation"></i> Invalied Password.</small>
+			    <button type="submit" id="login_btn">Login</button>
+			    <p>You don't have an account? <span id="login_span">sign up</span></p>
+			</form>
+		  </div>
+
+		  <div id="signup" class="animate__animated animate__flipInY">
+		  	<h1>Sign up</h1>
+			<form id="signup_frm" autocomplete="off">
+				<input type="name" placeholder="Name" id="username" required="required">
+				<input type="email" placeholder="Email" id="email" required="required">
+				<small id="email_notice"><i class="fa-solid fa-triangle-exclamation"></i> Email id already exist..</small>
+				<input type="number" placeholder="Mobile no." id="mobile" required="required">
+				<input type="password" placeholder="Password" id="password" required="required">
+				<button type="submit" id="signup_btn">Sign up</button>
+				<p>You have already account? <span id="signup_span">Login</span></p>
+			</form>
+		  </div>
+
+		</div>
+	</div>
+<script src="java script/index.js"></script>
+<script src="java script/login_signup.js"></script>
+</body>
+</html>

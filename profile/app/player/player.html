@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>player</title>
+	<link rel="stylesheet" href="css/player.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+	<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+
+	<div id="left">
+		<video  id="video_upload">
+			<source id="video_src" src="https://media.istockphoto.com/id/2157872163/video/fourth-of-july-independence-day-4th-of-july-poster-with-firework-4k.mp4?s=mp4-640x640-is&k=20&c=pum3rk6LYjZ0IvZJd3DQAyIzdPO0PWGxVbo-Onh04GI="></source>
+		</video>
+
+		<div id="speed_body" style="display: none;">
+			<div class="speed_box">
+			    <button id="minus">−</button>
+			    <div id="speedDisplay">1.00 X</div>
+			    <input type="range" id="speedSlider" min="0.5" max="4" step="0.1" value="1">
+			    <button id="plus">+</button>
+			</div>
+		</div>
+
+		<div id="progress_box">
+			<div id="progress_bar"></div>
+			<div id="thumb_point"></div>
+		</div>
+
+		<div id="control">
+			<div id="timing">
+				<p id="time">00:00 / 00:00</p>
+			</div>
+			<div id="play_tools">
+				<i class="fa-solid fa-hand-point-left" id="left_btn"></i>
+				<i class= "fa-solid fa-circle-play" id="play_btn"></i>
+				<i class="fa-solid fa-hand-point-right" id="right_btn"></i>
+			</div>
+			<div id="other_tools">
+				<div id="volume_box">
+					<input type="range" min="0" max="1" step="0.01" id="volume_range" value="0.5" style="display: none;">
+					<i class="fa-solid fa-volume-high" id = "volume"></i>
+				</div>
+				<i class="fa-solid fa-gauge" id="speed"></i>
+				<i class="fa-solid fa-expand" id = "full_screen"></i>
+			</div>
+		</div>
+	</div>
+
+	<div id="right">
+		<div id="top">
+  			  <i class="fa-solid fa-circle-half-stroke" id="mode_toggle" ></i>
+  			  <p id="dark">Dark</p>
+			<h3>Playlist</h3><i class="fa-regular fa-square-plus" id="plus_btn"></i>
+			<p id="add_txt">Plus</p>
+			<input type="search" placeholder="Search videos..." id="Search_video">
+		</div>
+		<div id="add_video_box">
+			<form>
+			<h3>Add any videos</h3>
+			<input type="text" placeholder="Enter Video Name..." id="video_name"><br>
+			<input type="text" placeholder="Enter Video Link..." id="video_link"><br>
+			<button id="add_video_btn">Add</button>
+			</form>
+		</div>
+
+		<div id="bottom"></div>
+	</div>
+
+<script src="js/player.js"></script>
+</body>
+</html>

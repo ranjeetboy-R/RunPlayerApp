@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pro Calculator</title>
+</head>
+  <style>
+        /* Reset and Body */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #2e2e4f);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      padding: 15px 10px;
+      min-height: 100vh;
+      background-attachment: fixed;
+    }
+
+    /* Container */
+    .container {
+      width: 360px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+    }
+
+    /* Top Bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-bar h1 {
+      font-size: 20px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    #themeSelector,#copyBtn {
+      padding: 5px 8px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background-color: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+    /* Display */
+    #display {
+      width: 100%;
+      height: 55px;
+      font-size: 26px;
+      margin: 15px 0;
+      padding: 10px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: right;
+      border: none;
+      box-shadow: inset 0 0 10px #000;
+    }
+
+    /* Button Grid */
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    button {
+      height: 40px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      height: 43px;
+      background: rgba(0, 255, 255, 0.15);
+      box-shadow: 0 0 10px #0ff;
+      transform: scale(1.05);
+    }
+
+    /* = Button Highlighted */
+    button[onclick*="calculate"] {
+      background: #0077ff;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Bottom Buttons */
+    .bottom-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .bottom-bar button {
+      width: 48%;
+      padding: 8px;
+      background: #0077ff;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .bottom-bar button:hover {
+      background: #005ecb;
+    }
+
+    /* History */
+    .history-panel {
+      margin-top: 25px;
+      background: rgba(255,255,255,0.08);
+      padding: 10px;
+      border-radius: 12px;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    @media(max-height: 700px)
+    {
+      .history-panel{
+        max-height: fit-content;
+      }
+    }
+
+    .history-panel::-webkit-scrollbar{
+      width : 3px;
+    }
+
+    .history-panel::-webkit-scrollbar-track{
+      background-color: white;
+    }
+
+    .history-panel::-webkit-scrollbar-thumb{
+      cursor: pointer;
+      background-color: #0077ff;
+      border-radius: 50px;
+    }
+
+    .history-panel h3 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    #historyList {
+      font-size: 14px;
+      list-style: none;
+      padding-left: 12px;
+    }
+
+    /* Themes */
+    body.light {
+      background: #f1f1f1;
+      color: #111;
+    }
+
+    body.light .container {
+      background: #fff;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    body.light #micBtn {
+      color: black;
+    }
+
+    body.light #display {
+      background: #eee;
+      color: #111;
+    }
+
+    body.light button {
+      background: #ddd;
+      color: #111;
+    }
+
+    body.light button:hover {
+      background: #ccc;
+      box-shadow: 0 0 5px #0ff;
+    }
+
+    body.light .bottom-bar button {
+      background: #0077ff;
+      color: white;
+    }
+
+    body.light button[onclick*="calculate"] {
+      background: #0077ff;
+      color: white;
+    }
+
+    body.blue {
+      background: linear-gradient(to right, #001f3f, #003366);
+    }
+
+    body.blue .container {
+      background: rgba(0,0,40,0.3);
+    }
+
+    body.glass {
+      background: #222 url('https://images.unsplash.com/photo-1607082349250-449a9f5123dd?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+      color: #fff;
+    }
+
+    body.glass .container {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+  </style>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <h1>Calculator</h1>
+      <div class="controls">
+        <select id="themeSelector">
+          <option value="dark">🌑 Dark</option>
+          <option value="light">☀️ Light</option>
+          <option value="blue">🔵 Blue</option>
+          <option value="glass">🧊 Glass</option>
+        </select>
+        <button id="copyBtn" title="Copy Result">📋</button>
+      </div>
+    </div>
+
+    <input type="text" id="display" readonly />
+
+    <div class="buttons">
+      <button onclick="clearAll()">C</button>
+      <button onclick="backspace()">⌫</button>
+      <button onclick="append('%')">%</button>
+      <button onclick="append('/')">÷</button>
+
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button onclick="append('*')">×</button>
+
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button onclick="append('-')">−</button>
+
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button onclick="append('+')">+</button>
+
+      <button onclick="append('0')">0</button>
+      <button onclick="append('.')">.</button>
+      <button onclick="toggleSign()">±</button>
+      <button onclick="calculate()">=</button>
+
+      <!-- Scientific Row -->
+      <button onclick="scientific('sqrt')">√</button>
+      <button onclick="scientific('square')">x²</button>
+      <button onclick="scientific('inverse')">1/x</button>
+      <button onclick="scientific('log')">log</button>
+
+      <button onclick="scientific('sin')">sin</button>
+      <button onclick="scientific('cos')">cos</button>
+      <button onclick="scientific('tan')">tan</button>
+      <button onclick="scientific('pi')">π</button>
+    </div>
+
+    <div class="bottom-bar">
+      <button onclick="saveHistory()">💾 Save History</button>
+      <button onclick="clearHistory()">🧹 Clear History</button>
+    </div>
+
+    <div class="history-panel">
+      <h3>📜 History</h3>
+      <ul id="historyList"></ul>
+    </div>
+  </div>
+  <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-29.mp3" preload="auto"></audio>
+  <script>
+    let display = document.getElementById("display");
+    let historyList = document.getElementById("historyList");
+    let clickSound = document.getElementById("clickSound");
+    clickSound.volume = 0.2; // ✅ Soft volume for button click
+
+    // ✅ Append number/operator to display
+    function append(value) {
+      playSound();
+      display.value += value;
+    }
+
+    // ✅ Clear all input
+    function clearAll() {
+      playSound();
+      display.value = "";
+    }
+
+    // ✅ Backspace
+    function backspace() {
+      playSound();
+      display.value = display.value.slice(0, -1);
+    }
+
+    // ✅ Toggle sign
+    function toggleSign() {
+      playSound();
+      if (display.value.startsWith("-")) {
+        display.value = display.value.slice(1);
+      } else {
+        display.value = "-" + display.value;
+      }
+    }
+
+    // ✅ Copy result to clipboard
+    document.getElementById("copyBtn").onclick = () => {
+      navigator.clipboard.writeText(display.value);
+      alert("Copied: " + display.value);
+    };
+
+    // ✅ Calculate result
+    function calculate() {
+      playSound();
+      try {
+        let result = eval(display.value);
+        addToHistory(display.value + " = " + result);
+        display.value = result;
+      } catch {
+        display.value = "Error";
+      }
+    }
+
+    // ✅ Scientific operations
+    function scientific(func) {
+      playSound();
+      let val = parseFloat(display.value);
+      let result = "";
+
+      switch (func) {
+        case "sqrt": result = Math.sqrt(val); break;
+        case "square": result = Math.pow(val, 2); break;
+        case "inverse": result = 1 / val; break;
+        case "log": result = Math.log10(val); break;
+        case "sin": result = Math.sin(toRad(val)); break;
+        case "cos": result = Math.cos(toRad(val)); break;
+        case "tan": result = Math.tan(toRad(val)); break;
+        case "pi": result = Math.PI; break;
+      }
+
+      addToHistory(`${func}(${val}) = ${result}`);
+      display.value = result;
+    }
+
+    function toRad(deg) {
+      return deg * (Math.PI / 180);
+    }
+
+    // ✅ Add to History
+    function addToHistory(entry) {
+      let li = document.createElement("li");
+      li.textContent = entry;
+      historyList.appendChild(li);
+      localStorage.setItem("calcHistory", historyList.innerHTML);
+    }
+
+    // ✅ Save History to File
+    function saveHistory() {
+      playSound();
+      let content = historyList.innerText;
+      let blob = new Blob([content], { type: "text/plain" });
+      let link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "calc-history.txt";
+      link.click();
+    }
+
+    // ✅ Clear History
+    function clearHistory() {
+      playSound();
+      historyList.innerHTML = "";
+      localStorage.removeItem("calcHistory");
+    }
+
+    // ✅ Load History on page load
+    window.onload = () => {
+      historyList.innerHTML = localStorage.getItem("calcHistory") || "";
+      clickSound.volume = 0.2; // ensure soft volume after reload
+    };
+
+    // ✅ Play click sound
+    function playSound() {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }
+
+    // ✅ Theme Selector
+    document.getElementById("themeSelector").addEventListener("change", function () {
+      document.body.className = this.value;
+    });
+
+    // ✅ Keyboard Support
+    document.addEventListener("keydown", function (e) {
+      let allowedKeys = "0123456789+-*/%.";
+      if (allowedKeys.includes(e.key)) {
+        append(e.key);
+      } else if (e.key === "Enter") {
+        calculate();
+      } else if (e.key === "Backspace") {
+        backspace();
+      }
+    });
+
+  </script>
+</body>
+</html>
